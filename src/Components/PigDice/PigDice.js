@@ -46,22 +46,21 @@ const PigDice = () => {
   const [dice2, setDice2] = useState(0);
 
   useEffect(() => {
+    //Check winning score
+    const checkWinningScore = () => {
+      if (state.player1Score >= 100 || state.player2Score >= 100) {
+        setState({
+          ...state,
+          gameState: `${
+            state.player1Score >= 100 ? "Player 1 Wins!" : "Player 2 Wins!"
+          }`,
+          currentRollScore: 0,
+        });
+      }
+    };
+
     checkWinningScore();
   }, [state.player1Score, state.player2Score]);
-
-  //Check winning score
-  const checkWinningScore = () => {
-    if (state.player1Score >= 100 || state.player2Score >= 100) {
-      console.log(state.player1Score, state.player2Score);
-      setState({
-        ...state,
-        gameState: `${
-          state.player1Score >= 100 ? "Player 1 Wins!" : "Player 2 Wins!"
-        }`,
-        currentRollScore: 0,
-      });
-    }
-  };
 
   const showEndingCredit = () => {
     if (
@@ -114,7 +113,7 @@ const PigDice = () => {
   };
 
   const checkDice = () => {
-    return dice1 == 1 || dice2 == 1
+    return dice1 === 1 || dice2 === 1
       ? 0
       : state.currentRollScore + dice1 + dice2;
   };
@@ -140,7 +139,6 @@ const PigDice = () => {
         <Paper>
           <Typography
             variant="h4"
-            bold
             gutterBottom
             style={{ paddingTop: "30px", textTransform: "uppercase" }}
           >
@@ -165,7 +163,7 @@ const PigDice = () => {
           </Button>
           <CurrentDiceSum>
             {state.gameState === "ongoing"
-              ? dice1 == 1 || dice2 == 1
+              ? dice1 === 1 || dice2 === 1
                 ? 0
                 : state.currentRollScore + dice1 + dice2
               : "Game Over"}

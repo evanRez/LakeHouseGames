@@ -83,8 +83,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PersistentDrawerLeft = (props) => {
-  console.log(props);
-
   const { history } = props;
 
   const classes = useStyles();

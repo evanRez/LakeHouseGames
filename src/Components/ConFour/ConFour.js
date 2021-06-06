@@ -62,7 +62,7 @@ const getGameState = (board) => {
         board[index + 7 * 2],
         board[index + 7 * 3],
       ];
-      console.log(board[index]);
+
       const winningResult = checkWinningSlice(boardSlice);
       if (winningResult !== false) {
         board[index] = 3;
@@ -193,7 +193,7 @@ const ConFour = () => {
     newBoard[index] = playerTurn;
 
     const gameState = getGameState(newBoard);
-    console.log("gameState", gameState);
+
     setState({
       board: newBoard,
       playerTurn: togglePlayerTurn(playerTurn),

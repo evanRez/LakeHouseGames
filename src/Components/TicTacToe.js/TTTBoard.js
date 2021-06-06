@@ -30,10 +30,6 @@ const Board = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  const handleOpen = () => {
-    setShowModal(true);
-  };
-
   const handleClose = () => {
     setShowModal(false);
     resetGame();
@@ -53,8 +49,6 @@ const Board = () => {
       squares: squares,
       xIsNext: !state.xIsNext,
     });
-    console.log(squares);
-    console.log(squares[i]);
   };
 
   function calculateWinner(squares) {
@@ -100,6 +94,9 @@ const Board = () => {
 
   useEffect(() => {
     if (winner) {
+      const handleOpen = () => {
+        setShowModal(true);
+      };
       handleOpen();
     }
   }, [status]);
@@ -143,7 +140,6 @@ const Board = () => {
         <Grid
           container
           spacing={1}
-          maxWidth="false"
           style={{
             maxWidth: "600px",
             display: "flex",
@@ -151,9 +147,8 @@ const Board = () => {
           }}
         >
           {sqID.map((i) => {
-            console.log(state.squares[i]);
             return (
-              <Grid item xs={4} key={sqID[i]} maxWidth="sm">
+              <Grid item xs={4} key={sqID[i]}>
                 <TTTSquare
                   onClick={() => handleClick(i)}
                   value={state.squares[i]}
