@@ -1,0 +1,22 @@
+/*Video by Burak K from Pexels*/
+@import url("https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap");
+
+.videoTag {
+  height: 100vh;
+  width: 100%;
+  top: 10;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.titleFont {
+  color: #fff;
+  padding-top: calc(50vh - 5rem);
+  font-family: "Nothing You Could Do", cursive;
+  font-size: 5rem;
+}
+
+/* .overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  
+} */

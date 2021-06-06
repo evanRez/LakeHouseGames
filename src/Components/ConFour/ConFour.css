@@ -1,0 +1,69 @@
+.board {
+  background: linear-gradient(45deg, #373838, #6b6b6b);
+  width: 90vh;
+  margin: auto;
+  border-radius: 3px;
+}
+
+.board .cell {
+  width: calc(90vh / 7 - 8px);
+  height: calc(90vh / 7 - 8px);
+  background: rgb(77, 78, 78);
+  background: linear-gradient(
+    180deg,
+    rgb(45, 46, 46) 0%,
+    rgba(19, 19, 19, 1) 100%
+  );
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 50%;
+  margin: 4px;
+}
+
+.board .cell[data-player="playerOne"] {
+  background: linear-gradient(45deg, #18f566, #199892);
+  animation-name: moveInTop;
+  animation-duration: 1s;
+}
+
+.board .cell[data-player="playerTwo"] {
+  background: linear-gradient(45deg, #ac93ef, #ff4288);
+  animation-name: moveInTop;
+  animation-duration: 1s;
+}
+
+.board .cell[data-player="playerWinner"] {
+  background: linear-gradient(45deg, #f6f6f7, #f4f740);
+  animation-name: moveInTop;
+  animation-duration: 1s;
+  transition-delay: 0.5s;
+}
+
+.gameStatus {
+  padding-top: 115px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: rgb(187, 184, 184);
+}
+
+.conFourBody {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23222' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.resetConFourBtn {
+  padding: 30px 5px;
+}
+
+@keyframes moveInTop {
+  0% {
+    transform: translateY(-600px);
+    z-index: -1;
+  }
+
+  100% {
+    transform: translate(0);
+    z-index: -1;
+  }
+}

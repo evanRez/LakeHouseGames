@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Board from "./Components/TicTacToe.js/TTTBoard";
+import ConFour from "./Components/ConFour/ConFour";
+import PigDice from "./Components/PigDice/PigDice";
+import Home from "./Components/Home/Home";
+import { Switch, Route } from "react-router-dom";
+import PersistentDrawerLeft from "./LeftSideDrawer";
+
+let stillConfiguiring = false;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {stillConfiguiring ? (
+        <>
+          <Board />
+          <ConFour />
+          <PigDice />
+        </>
+      ) : (
+        <>
+          <PersistentDrawerLeft />
+          <Switch>
+            <Route
+              exact
+              from="/TicTacToe"
+              render={(props) => <Board {...props} />}
+            />
+            <Route
+              exact
+              from="/ConnectFour"
+              render={(props) => <ConFour {...props} />}
+            />
+            <Route
+              exact
+              from="/PigDice"
+              render={(props) => <PigDice {...props} />}
+            />
+            <Route exact from="/" render={(props) => <Home {...props} />} />
+          </Switch>
+        </>
+      )}
     </div>
   );
 }
