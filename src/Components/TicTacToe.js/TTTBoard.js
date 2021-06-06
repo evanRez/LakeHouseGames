@@ -99,7 +99,7 @@ const Board = () => {
       };
       handleOpen();
     }
-  }, [status]);
+  }, [winner]);
 
   return (
     <div className="tictacboard">

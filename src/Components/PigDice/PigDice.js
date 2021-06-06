@@ -45,14 +45,16 @@ const PigDice = () => {
   const [dice1, setDice1] = useState(0);
   const [dice2, setDice2] = useState(0);
 
+  const { player1Score, player2Score } = state;
+
   useEffect(() => {
     //Check winning score
+
     const checkWinningScore = () => {
-      if (state.player1Score >= 100 || state.player2Score >= 100) {
+      if (player1Score >= 100 || player2Score >= 100) {
         setState({
-          ...state,
           gameState: `${
-            state.player1Score >= 100 ? "Player 1 Wins!" : "Player 2 Wins!"
+            player1Score >= 100 ? "Player 1 Wins!" : "Player 2 Wins!"
           }`,
           currentRollScore: 0,
         });
@@ -60,7 +62,7 @@ const PigDice = () => {
     };
 
     checkWinningScore();
-  }, [state.player1Score, state.player2Score]);
+  }, [player1Score, player2Score]);
 
   const showEndingCredit = () => {
     if (
